@@ -1,2 +1,5 @@
-# OpenCL
-Course for OpenCL
+# Курс OpenCL
+
+##Описание
+
+Вводный курс в технологию OpenCL. 
