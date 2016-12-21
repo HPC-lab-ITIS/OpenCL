@@ -1,0 +1,2 @@
+/gpfs/GLOBAL_JOB_REPO_KPFU/hydrogeochemicallab/ekhramch/itis/parallel_itis_3_master/lec_2/build/CMakeFiles/ex_3.dir
+/gpfs/GLOBAL_JOB_REPO_KPFU/hydrogeochemicallab/ekhramch/itis/parallel_itis_3_master/lec_2/build/CMakeFiles/ex_4.dir
