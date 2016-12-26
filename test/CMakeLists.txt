@@ -26,6 +26,4 @@ function(add_vexcl_executable target source)
     target_link_libraries(${target} ${OpenCL_LIBRARIES} ${Boost_LIBRARIES})
 endfunction()
 
-add_vexcl_executable(ex_3  ex_3.cpp)
-add_vexcl_executable(ex_4  ex_4.cpp)
 add_vexcl_executable(test test.cpp)
