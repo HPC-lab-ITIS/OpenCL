@@ -14,6 +14,7 @@
 
 ## Источники
 http://handsonopencl.github.io/
+
 http://developer.amd.com/tools-and-sdks/opencl-zone/opencl-resources/opencl-course-introduction-to-opencl-programming/
 
 
