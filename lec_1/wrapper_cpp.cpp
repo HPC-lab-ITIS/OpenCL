@@ -13,7 +13,7 @@ int main(int argc, char** argv)
     std::vector<double> h_a(n), h_b(n), h_c(n);
     profiler prof;
 
-    std::ifstream ifs("ex_2.cl");
+    std::ifstream ifs("wrapper_cpp.cl");
     std::string source( (std::istreambuf_iterator<char>(ifs)), (std::istreambuf_iterator<char>()) );
     std::uniform_real_distribution<double> distribution(0.0, 1.0);
     std::mt19937 engine; 
