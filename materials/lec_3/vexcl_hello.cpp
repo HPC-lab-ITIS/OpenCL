@@ -7,6 +7,5 @@ int main() {
 
     if (!ctx) throw std::runtime_error("No devices available.");
 
-    // Print out list of selected devices:
     std::cout << ctx << std::endl;
 }

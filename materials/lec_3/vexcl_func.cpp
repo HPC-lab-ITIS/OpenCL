@@ -10,7 +10,7 @@ int main()
     vex::profiler<> prof(ctx);
 
     prof.tic_cpu("init");
-    const size_t n = 256 * 1024 * 1024;
+    const size_t n = 1 << 28;
 
     std::vector<double> a(n);
     std::vector<double> b(n);
@@ -30,33 +30,26 @@ int main()
     prof.toc("init");
 
     prof.tic_cpu("cpu");
-    for(auto i = 0; i < n; ++i)
+    for(size_t i = 0; i < n; ++i)
         c_1[i] = sqrt(5. * a[i]) + pow( sin(b[i]), 2. );
     prof.toc("cpu");
     
-    prof.tic_cpu("vexcl_1");
+    prof.tic_cl("vexcl vector operation");
     C = sqrt(5. * A) + pow(sin(B), 2.);
-    vex::copy(C, c_2);
-    prof.toc("vexcl_1");
+    prof.toc("vexcl vector operation");
+	vex::copy(C, c_2);
 
-    prof.tic_cpu("vexcl_2");
+    prof.tic_cl("vexcl function");
     VEX_FUNCTION(double, my_func, (double, x)(double, y),
             return sqrt(5. * x) + pow( sin(y), 2. );
             );
     C = my_func(A, B);
+    prof.toc("vexcl function");
     vex::copy(C, c_3);
-    prof.toc("vexcl_2");
 
-    for(auto i = 0; i < n; ++i)
-        if( fabs(2.*c_1[i] - c_2[i] - c_3[i]) > 1e-5 )
-        {
-            std::cout << "error" << std::endl;
-            break;
-        }
-
-    prof.tic_cpu("vexcl_sort");
+    prof.tic_cl("vexcl sort");
     vex::sort(C);
-    prof.toc("vexcl_sort");
+    prof.toc("vexcl sort");
 
     prof.tic_cpu("cpu_sort");
     std::sort(c_1.begin(), c_1.end());
